@@ -105,11 +105,12 @@ fun HotelCard(hotel: Hotel){
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold
                     )
-                    repeat(4) {
+                    val starCount = hotel.hotel_rating.toInt()
+                    repeat(starCount) {
                         Icon(
                             imageVector = Icons.Filled.Star,
                             contentDescription = "Star",
-                            tint = Color.Yellow,
+                            tint = Color(0xFFFFC107),
                             modifier = Modifier.size(16.dp)
                         )
                     }
