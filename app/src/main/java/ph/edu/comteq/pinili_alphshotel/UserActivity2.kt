@@ -58,12 +58,13 @@ class UserActivity2 : ComponentActivity() {
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
                                     Row(verticalAlignment = Alignment.CenterVertically) {
+                                        //Title
                                         Text(
                                             text = "The Alphs Hotel",
                                             fontWeight = FontWeight.Bold,
                                             fontSize = 20.sp
                                         )
-
+                                        // Logo
                                         Image(
                                             painter = painterResource(id = R.drawable.france_national_flag),
                                             contentDescription = "Flag",
@@ -73,7 +74,7 @@ class UserActivity2 : ComponentActivity() {
                                         )
                                     }
 
-                                    // Optional: still show user icon here if needed
+                                    //UserIcon
                                     Icon(
                                         imageVector = Icons.Outlined.Person,
                                         contentDescription = "User",
@@ -81,6 +82,7 @@ class UserActivity2 : ComponentActivity() {
                                     )
                                 }
                             },
+                            //Navigation to MainActivity
                             navigationIcon = {
                                 val context = LocalContext.current
                                 Icon(
@@ -114,6 +116,7 @@ class UserActivity2 : ComponentActivity() {
 
 @Composable
 fun Profile(modifier: Modifier = Modifier) {
+    //To horizotal alignment and to center content
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -148,7 +151,7 @@ fun Profile(modifier: Modifier = Modifier) {
 
         // Description
         Text(
-            text = "Adrian Chrstian Pinili with Bachelor of Cmpu",
+            text = "Adrian Chrstian Pinili taking Bachelor of Science in Information Technology with Subject of Mobile Applications Development (Android)",
             fontSize = 16.sp,
             color = Color.Black,
             modifier = Modifier

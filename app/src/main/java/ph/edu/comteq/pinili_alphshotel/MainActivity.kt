@@ -73,13 +73,13 @@ class MainActivity : ComponentActivity() {
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
                                     Row(verticalAlignment = Alignment.CenterVertically) {
-
+                                        //title
                                         Text(
                                             text = "The Alphs Hotel",
                                             fontWeight = FontWeight.Bold,
                                             fontSize = 20.sp
                                         )
-
+                                        //logo
                                         Image(
                                             painter = painterResource(id = R.drawable.france_national_flag),
                                             contentDescription = "Flag",
@@ -89,7 +89,7 @@ class MainActivity : ComponentActivity() {
                                         )
                                     }
                                     val context = LocalContext.current
-
+                                    //redirect to UserActivity2
                                     Icon(
                                         imageVector = Icons.Outlined.Person,
                                         contentDescription = "User",
@@ -120,10 +120,18 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun HotelCard(hotel: Hotel){
-    Card  (
-        modifier = Modifier.fillMaxWidth()
+    val context = LocalContext.current
+
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 4.dp)
-    ){
+            .clickable {
+                val intent = Intent(context, HotelDetailActivity::class.java)
+                intent.putExtra("hotel", Gson().toJson(hotel))
+                context.startActivity(intent)
+            }
+    ) {
         Row (
             modifier = Modifier.fillMaxWidth().padding(12.dp),
             verticalAlignment = Alignment.CenterVertically
