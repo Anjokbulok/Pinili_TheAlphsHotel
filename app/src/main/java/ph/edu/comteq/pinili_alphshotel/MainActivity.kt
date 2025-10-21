@@ -1,10 +1,12 @@
 package ph.edu.comteq.pinili_alphshotel
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -40,6 +42,10 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.draw.clip
@@ -50,14 +56,60 @@ import coil.request.ImageRequest
 import ph.edu.comteq.pinili_alphshotel.ui.theme.Pinili_AlphsHotelTheme
 
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             Pinili_AlphsHotelTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Homepage(
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    topBar = {
+                        TopAppBar(
+                            title = {
+                                Row(
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Row(verticalAlignment = Alignment.CenterVertically) {
 
+                                        Text(
+                                            text = "The Alphs Hotel",
+                                            fontWeight = FontWeight.Bold,
+                                            fontSize = 20.sp
+                                        )
+
+                                        Image(
+                                            painter = painterResource(id = R.drawable.france_national_flag),
+                                            contentDescription = "Flag",
+                                            modifier = Modifier
+                                                .width(40.dp)
+                                                .padding(end = 8.dp)
+                                        )
+                                    }
+                                    val context = LocalContext.current
+
+                                    Icon(
+                                        imageVector = Icons.Outlined.Person,
+                                        contentDescription = "User",
+                                        modifier = Modifier
+                                            .size(28.dp)
+                                            .clickable {
+                                                val intent = Intent(context, UserActivity2::class.java)
+                                                context.startActivity(intent)
+                                            }
+                                    )
+                                }
+                            },
+                            colors = TopAppBarDefaults.topAppBarColors(
+                                containerColor = MaterialTheme.colorScheme.primaryContainer,
+                                titleContentColor = MaterialTheme.colorScheme.primary
+                            )
+                        )
+                    }
+                ) { innerPadding ->
+                    Homepage(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -65,6 +117,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
 @Composable
 fun HotelCard(hotel: Hotel){
     Card  (
@@ -148,34 +201,34 @@ fun Homepage(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
     ){
-        Row(
-           modifier = Modifier
-               .fillMaxWidth()
-               .padding(16.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ){
-            Row(verticalAlignment = Alignment.CenterVertically
-
-            ){
-                Text(
-                    "The Alphs Hotel"
-                )
-
-                // left side title and logo
-                Image(
-                    painter = painterResource(id = R.drawable.france_national_flag),
-                    contentDescription = "Logo",
-                    modifier = Modifier.width(40.dp).padding(end = 8.dp)
-                )
-            }
-            //right side user icon
-            Icon(
-                imageVector = Icons.Outlined.Person,
-                contentDescription = "User",
-                modifier = Modifier.width(40.dp)
-            )
-        }
+//        Row(
+//           modifier = Modifier
+//               .fillMaxWidth()
+//               .padding(16.dp),
+//            horizontalArrangement = Arrangement.SpaceBetween,
+//            verticalAlignment = Alignment.CenterVertically
+//        ){
+//            Row(verticalAlignment = Alignment.CenterVertically
+//
+//            ){
+//                Text(
+//                    "The Alphs Hotel"
+//                )
+//
+//                // left side title and logo
+//                Image(
+//                    painter = painterResource(id = R.drawable.france_national_flag),
+//                    contentDescription = "Logo",
+//                    modifier = Modifier.width(40.dp).padding(end = 8.dp)
+//                )
+//            }
+//            //right side user icon
+//            Icon(
+//                imageVector = Icons.Outlined.Person,
+//                contentDescription = "User",
+//                modifier = Modifier.width(40.dp)
+//            )
+//        }
 
         //search box
         //search box
