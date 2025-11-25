@@ -25,18 +25,7 @@ import ph.edu.comteq.pinili_alphshotel.ui.theme.Pinili_AlphsHotelTheme
 import java.text.SimpleDateFormat
 import java.util.*
 
-data class Booking(
-    val firstName: String,
-    val lastName: String,
-    val checkIn: String,
-    val checkOut: String,
-    val adults: Int,
-    val children: Int,
-    val rooms: Int,
-    val travelType: String,
-    val paymentMethod: String,
-    val totalPrice: Double
-)
+
 
 class BookingConfirm : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
