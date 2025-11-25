@@ -186,10 +186,11 @@ class HotelDetailActivity : ComponentActivity() {
 
             when (selectedTabIndex) {
                 0 -> GuestReviewsTab(details.guest_reviews)
-                1 -> RoomSelectionTab(details.rooms)
+                1 -> RoomSelectionTab(hotel, details.rooms) // pass hotel here
             }
         }
     }
+
 
     //Guest tab
     @Composable
@@ -217,19 +218,42 @@ class HotelDetailActivity : ComponentActivity() {
 
     //Room selection
     @Composable
-    fun RoomSelectionTab(rooms: List<Room>) {
+    fun RoomSelectionTab(hotel: Hotel, rooms: List<Room>) {
+
+        val context = LocalContext.current
+
         Column(Modifier.padding(16.dp)) {
             Text("Available Rooms", style = MaterialTheme.typography.titleLarge)
             Spacer(Modifier.height(8.dp))
 
             rooms.forEach { room ->
-                Text(
-                    "🛏 ${room.room_type} - \$${room.room_price_for_one_night}/night",
-                    fontWeight = FontWeight.Bold
-                )
-                Text("Beds: ${room.room_bed_type}")
-                Text("Guests: ${room.room_total_number_of_guests}")
-                Text("Features: ${room.room_features.joinToString(", ")}")
+
+                Column(
+                    modifier = Modifier
+                        .clickable {
+
+                            val hotelJson = Gson().toJson(hotel)
+                            val roomJson = Gson().toJson(room)
+
+                            val intent = Intent(context, BookingConfirm::class.java)
+                            intent.putExtra("hotel", hotelJson)
+                            intent.putExtra("room", roomJson)
+
+                            context.startActivity(intent)
+                        }
+                        .padding(12.dp)
+                        .fillMaxWidth()
+                ) {
+                    Text(
+                        "🛏 ${room.room_type} - €${room.room_price_for_one_night}/night",
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 18.sp
+                    )
+                    Text("Beds: ${room.room_bed_type}")
+                    Text("Guests: ${room.room_total_number_of_guests}")
+                    Text("Features: ${room.room_features.joinToString(", ")}")
+                }
+
                 Spacer(Modifier.height(16.dp))
             }
         }

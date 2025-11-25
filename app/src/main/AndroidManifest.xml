@@ -12,6 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pinili_AlphsHotel">
         <activity
+            android:name=".MyBookingsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_my_bookings"
+            android:theme="@style/Theme.Pinili_AlphsHotel" />
+        <activity
+            android:name=".MyBookingsActivty"
+            android:exported="false"
+            android:label="@string/title_activity_my_bookings_activty"
+            android:theme="@style/Theme.Pinili_AlphsHotel" />
+        <activity
+            android:name=".BookingConfirm"
+            android:exported="false"
+            android:label="@string/title_activity_booking_confirm"
+            android:theme="@style/Theme.Pinili_AlphsHotel" />
+        <activity
             android:name=".HotelDetailActivity"
             android:exported="false"
             android:label="@string/title_activity_hotel"

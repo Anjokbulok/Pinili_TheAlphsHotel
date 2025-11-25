@@ -88,7 +88,23 @@ class MainActivity : ComponentActivity() {
                                                 .padding(end = 8.dp)
                                         )
                                     }
-                                    val context = LocalContext.current
+
+//                                    val context = LocalContext.current
+//                                    Row(verticalAlignment = Alignment.CenterVertically) {
+//                                        // Bookmark icon
+//                                        Image(
+//                                            painter = painterResource(id = R.drawable.bookmark),
+//                                            contentDescription = "Bookmarks",
+//                                            modifier = Modifier
+//                                                .size(28.dp)
+//                                                .clickable {
+//                                                    val intent = Intent(context, MyBookingsActivity::class.java)
+//                                                    context.startActivity(intent)
+//                                                }
+//                                                .padding(end = 12.dp)
+//                                        )
+//                                    }
+                                  val context = LocalContext.current
                                     //redirect to UserActivity2
                                     Icon(
                                         imageVector = Icons.Outlined.Person,

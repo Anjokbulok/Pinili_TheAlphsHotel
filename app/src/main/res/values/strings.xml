@@ -2,4 +2,7 @@
     <string name="app_name">Pinili_AlphsHotel</string>
     <string name="title_activity_user2">UserActivity2</string>
     <string name="title_activity_hotel">HotelActivity</string>
+    <string name="title_activity_booking_confirm">BookingConfirm</string>
+    <string name="title_activity_my_bookings_activty">MyBookingsActivty</string>
+    <string name="title_activity_my_bookings">MyBookingsActivity</string>
 </resources>
